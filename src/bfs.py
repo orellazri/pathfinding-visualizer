@@ -41,40 +41,50 @@ class BFS:
 					q.put((row, col+1))
 					visited.append((row, col+1))
 					pi[(row, col+1)] = (row, col)
+
 			# Add left adjacent cell					
 			if col-1 >= 0 and (row, col-1) not in visited:
 				if self.map[row][col-1] != 'X':
 					q.put((row, col-1))
 					visited.append((row, col-1))
 					pi[(row, col-1)] = (row, col)
+
 			# Add bottom adjacent cell
 			if row+1 < self.rows and (row+1, col) not in visited:
 				if self.map[row+1][col] != 'X':
 					q.put((row+1, col))
 					visited.append((row+1, col))
 					pi[(row+1, col)] = (row, col)
+
 			# Add top adjacent cell
 			if row-1 >= 0 and (row-1, col) not in visited:
 				if self.map[row-1][col] != 'X':
 					q.put((row-1, col))
 					visited.append((row-1, col))
 					pi[(row-1, col)] = (row, col)
+			
 			# Add top right diagonal cell
 			if row-1 >= 0 and col+1 < self.cols and (row-1,col+1) not in visited:
 				if self.map[row-1][col] != 'X' and self.map[row][col+1] != 'X' and self.map[row-1][col+1] != 'X':
 					q.put((row-1, col+1))
 					visited.append((row-1, col+1))
 					pi[(row-1, col+1)] = (row, col)
+			
+			# Add top left diagonal cell
 			if row-1 >= 0 and col-1 >= 0 and (row-1,col-1) not in visited:
 				if self.map[row-1][col] != 'X' and self.map[row][col-1] != 'X' and self.map[row-1][col-1] != 'X':
 					q.put((row-1, col-1))
 					visited.append((row-1, col-1))
 					pi[(row-1, col-1)] = (row, col)
+			
+			# Add bottom right diagonal cell
 			if row+1 < self.rows and col+1 < self.cols and (row+1,col+1) not in visited:
 				if self.map[row+1][col] != 'X' and self.map[row][col+1] != 'X' and self.map[row+1][col+1] != 'X':
 					q.put((row+1, col+1))
 					visited.append((row+1, col+1))
 					pi[(row+1, col+1)] = (row, col)
+			
+			# Add bottom left diagonal cell
 			if row+1 < self.rows and col-1 >= 0 and (row+1,col-1) not in visited:
 				if self.map[row+1][col] != 'X' and self.map[row][col-1] != 'X' and self.map[row+1][col-1] != 'X':
 					q.put((row+1, col-1))
