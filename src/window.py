@@ -101,7 +101,7 @@ class Window:
 				if self.map[i][j] == 'S':
 					color = (0, 255, 0)
 				if self.map[i][j] == 'D':
-					color = (0, 255, 255)
+					color = (0, 0, 255)
 				if self.map[i][j] == 'V':
 					color = (60, 60, 60)
 				if self.map[i][j] == 'P':

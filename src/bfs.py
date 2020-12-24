@@ -59,6 +59,27 @@ class BFS:
 					q.put((row-1, col))
 					visited.append((row-1, col))
 					pi[(row-1, col)] = (row, col)
+			# Add top right diagonal cell
+			if row-1 >= 0 and col+1 < self.cols and (row-1,col+1) not in visited:
+				if self.map[row-1][col] != 'X' and self.map[row][col+1] != 'X' and self.map[row-1][col+1] != 'X':
+					q.put((row-1, col+1))
+					visited.append((row-1, col+1))
+					pi[(row-1, col+1)] = (row, col)
+			if row-1 >= 0 and col-1 >= 0 and (row-1,col-1) not in visited:
+				if self.map[row-1][col] != 'X' and self.map[row][col-1] != 'X' and self.map[row-1][col-1] != 'X':
+					q.put((row-1, col-1))
+					visited.append((row-1, col-1))
+					pi[(row-1, col-1)] = (row, col)
+			if row+1 < self.rows and col+1 < self.cols and (row+1,col+1) not in visited:
+				if self.map[row+1][col] != 'X' and self.map[row][col+1] != 'X' and self.map[row+1][col+1] != 'X':
+					q.put((row+1, col+1))
+					visited.append((row+1, col+1))
+					pi[(row+1, col+1)] = (row, col)
+			if row+1 < self.rows and col-1 >= 0 and (row+1,col-1) not in visited:
+				if self.map[row+1][col] != 'X' and self.map[row][col-1] != 'X' and self.map[row+1][col-1] != 'X':
+					q.put((row+1, col-1))
+					visited.append((row+1, col-1))
+					pi[(row+1, col-1)] = (row, col)
 
 		# Check if we got to the destination point
 		if finished:
